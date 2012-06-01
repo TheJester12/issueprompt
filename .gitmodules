@@ -25,3 +25,15 @@
 [submodule "workspace/bootstrap"]
 	path = workspace/bootstrap
 	url = https://github.com/twitter/bootstrap.git
+[submodule "extensions/members"]
+	path = extensions/members
+	url = https://github.com/symphonycms/members.git
+[submodule "extensions/html5_doctype"]
+	path = extensions/html5_doctype
+	url = https://github.com/domain7/html5_doctype.git
+[submodule "extensions/email_template_manager"]
+	path = extensions/email_template_manager
+	url = https://github.com/creativedutchmen/email_template_manager.git
+[submodule "extensions/url_router"]
+	path = extensions/url_router
+	url = https://github.com/symphonists/url_router.git

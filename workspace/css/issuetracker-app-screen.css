@@ -1,0 +1,205 @@
+body {
+    background:none;
+    padding-top:75px;
+}
+@media (max-width: 980px) {
+    body {
+        padding-top: 0px; /* 60px to make the container go all the way to the bottom of the topbar */
+    }
+}
+.btn-block {
+	display:block;
+}
+.btn-area {
+	margin-bottom:1em;
+}
+.heading {
+	margin-bottom:18px;
+}
+.select-multiple a:hover {
+	background:#eee url(../images/plus.png) right 5px no-repeat;
+}
+.active.select-one a, .active.select-multiple a {
+	padding-right: 28px;
+	background:#08C url(../images/closer.png) right 6px no-repeat;
+}
+.active.select-one a:hover, .active.select-multiple a:hover {
+	background:#08C url(../images/closer.png) right -27px no-repeat;
+}
+.nav-list li {
+	margin-bottom:1px;
+}
+.priority {
+	display:block;
+	width:14px;
+	height:14px;
+	margin-left:10px;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px;
+	-moz-box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px; /* FF 3.5+ */
+}
+.priority-4-No-Priority {
+	background: -webkit-gradient(linear, left top, left bottom, from(#c9c9c9), to(#8d8d8d));
+	background: -moz-linear-gradient(top,  #c9c9c9,  #8d8d8d);
+}
+.priority-1-High {
+	background: -webkit-gradient(linear, left top, left bottom, from(#c30000), to(#840000));
+	background: -moz-linear-gradient(top,  #c30000,  #840000);
+}
+.priority-2-Medium {
+	background: -webkit-gradient(linear, left top, left bottom, from(#fb6400), to(#aa4400));
+	background: -moz-linear-gradient(top,  #fb6400,  #aa4400);
+}
+.priority-3-Low {
+	background: -webkit-gradient(linear, left top, left bottom, from(#fbbd00), to(#aa8000));
+	background: -moz-linear-gradient(top,  #fbbd00,  #aa8000);
+}
+div.tagsinput {
+	border: 1px solid #CCC;
+	background: white;
+	padding: 0px;
+	width: 300px;
+	height: 100px;
+	overflow:hidden;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	-webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+	-moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+	-ms-transition: border linear 0.2s, box-shadow linear 0.2s;
+	-o-transition: border linear 0.2s, box-shadow linear 0.2s;
+	transition: border linear 0.2s, box-shadow linear 0.2s;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	background-color: white;
+	background-image:none;
+	border: 1px solid #CCC;
+	color: #555;
+}
+div.tagsinput span.tag {
+	-webkit-border-radius: 3px;
+	-moz-border-radius   : 3px;
+	border-radius        : 3px;
+	-moz-background-clip   : padding;
+	-webkit-background-clip: padding-box;
+	background-clip        : padding-box;
+	background-color: #e4e4e4;
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4f4f4', endColorstr='#eeeeee', GradientType=0 ); 
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(20%, #f4f4f4), color-stop(50%, #f0f0f0), color-stop(52%, #e8e8e8), color-stop(100%, #eeeeee));
+	background-image: -webkit-linear-gradient(top, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%);
+	background-image: -moz-linear-gradient(top, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%);
+	background-image: -o-linear-gradient(top, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%);
+	background-image: -ms-linear-gradient(top, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%);
+	background-image: linear-gradient(top, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%); 
+	-webkit-box-shadow: 0 0 2px #ffffff inset, 0 1px 0 rgba(0,0,0,0.05);
+	-moz-box-shadow   : 0 0 2px #ffffff inset, 0 1px 0 rgba(0,0,0,0.05);
+	box-shadow        : 0 0 2px #ffffff inset, 0 1px 0 rgba(0,0,0,0.05);
+	color: #333;
+	border: 1px solid #aaaaaa;
+	line-height: 13px;
+	padding: 3px 12px 3px 5px;
+	margin: 3px 0 3px 5px;
+	position: relative;
+	cursor: default;
+}
+div.tagsinput span.tag a {
+	display: block;
+	position: absolute;
+	right: 3px;
+	top: 4px;
+	width: 12px;
+	height: 13px;
+	font-size: 1px;
+	background: url('../js/chosen/chosen-sprite.png') right top no-repeat;
+	text-indent:-9999px;
+}
+div.tagsinput span.tag a:hover {
+ 	background-position: right -11px;
+}
+#fields-tags_tag {
+	border:none !important;
+	-webkit-box-shadow: none !important;
+	-moz-box-shadow: none !important;
+	box-shadow: none !important;
+}
+.tags-list {
+	margin:0 0 15px;
+	padding:0px;
+}
+.tags-list li {
+	display:inline-block;
+	-webkit-border-radius: 3px;
+	-moz-border-radius   : 3px;
+	border-radius        : 3px;
+	-moz-background-clip   : padding;
+	-webkit-background-clip: padding-box;
+	background-clip        : padding-box;
+	background-color: #e4e4e4;
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4f4f4', endColorstr='#eeeeee', GradientType=0 ); 
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(20%, #f4f4f4), color-stop(50%, #f0f0f0), color-stop(52%, #e8e8e8), color-stop(100%, #eeeeee));
+	background-image: -webkit-linear-gradient(top, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%);
+	background-image: -moz-linear-gradient(top, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%);
+	background-image: -o-linear-gradient(top, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%);
+	background-image: -ms-linear-gradient(top, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%);
+	background-image: linear-gradient(top, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%); 
+	-webkit-box-shadow: 0 0 2px #ffffff inset, 0 1px 0 rgba(0,0,0,0.05);
+	-moz-box-shadow   : 0 0 2px #ffffff inset, 0 1px 0 rgba(0,0,0,0.05);
+	box-shadow        : 0 0 2px #ffffff inset, 0 1px 0 rgba(0,0,0,0.05);
+	color: #666;
+	border: 1px solid #aaaaaa;
+	line-height: 13px;
+	padding: 3px 12px 3px 5px;
+	margin: 3px 5px 3px 0px;
+	position: relative; 
+	cursor: pointer;
+}
+.chzn-container .chzn-choices {
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	-webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+	-moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+	-ms-transition: border linear 0.2s, box-shadow linear 0.2s;
+	-o-transition: border linear 0.2s, box-shadow linear 0.2s;
+	transition: border linear 0.2s, box-shadow linear 0.2s;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	background-color: white;
+	background-image:none;
+	border: 1px solid #CCC;
+	color: #555;
+}
+.controls input, .controls textarea, .controls select {
+	width:96%;
+}
+.comment .meta {
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+	font-size: 11px;
+	font-weight: bold;
+	line-height: 18px;
+	color: #999;
+	text-transform: uppercase;
+	margin-bottom:0px;
+}
+a.avatar {
+	display:block;
+	text-decoration:none;
+}
+a.avatar span {
+	margin-left:5px;
+}
+h3 {
+	margin-bottom:5px;
+}
+/*
+.controls input, .controls textarea, .controls select {
+	box-sizing:border-box;
+    width:100%;
+}
+input, select {
+	height:26px;
+}
+*/
