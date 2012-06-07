@@ -81,7 +81,7 @@
 			
 					<xsl:when test="$ds-user-view-individual = $member-id or $member-role = 'Administrator'">
 									
-						<div class="btn-area"><a href="{$root}/users/view/{logged-in-member-organization/entry/organization-name/@handle}/{user-view-individual/entry/name/@handle}/" class="btn btn-primary btn-large btn-block">Edit User</a></div>
+						<div class="btn-area"><a href="{$root}/users/edit/{logged-in-member-organization/entry/organization-name/@handle}/{user-view-individual/entry/name/@handle}/" class="btn btn-primary btn-large btn-block">Edit User</a></div>
 							
 					</xsl:when>
 					

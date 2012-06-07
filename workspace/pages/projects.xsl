@@ -51,6 +51,7 @@
 							<tbody>
 								<tr class="labels">
 									<th>Project</th>
+									<th>ID</th>
 									<th>Client</th>
 									<th>Issues</th>
 									<th>Comments</th>
@@ -334,6 +335,7 @@
 <xsl:template match="projects-all/entry">
 						<tr>
 							<td><a href="{$root}/projects/view/{organization-link/item/@handle}/{project-name/@handle}/"><xsl:value-of select="project-name"/></a></td>
+							<td><xsl:value-of select="project-id"/></td>
 							<td><xsl:value-of select="client/item"/></td>
 							<td><xsl:value-of select="@issues"/> Issue<xsl:if test="@issues != '1'">s</xsl:if></td>
 							<td><xsl:value-of select="@comments"/> Comment<xsl:if test="@comments != '1'">s</xsl:if></td>

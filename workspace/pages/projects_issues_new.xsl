@@ -33,12 +33,16 @@
 			</li>
 			<li class="active">New Issue</li>
 		</ul>
-	
-		<h1>New Issue</h1>
+		
+		<div class="row">
+			<div class="span12 heading">
+				<h1>New Issue</h1>
+			</div>
+		</div>
 		
 		<div class="row">
 		
-			<div class="span9">
+			<div class="span12">
 		
 				<form action="" method="post">
 				
@@ -49,19 +53,20 @@
 						<div class="controls">
 							<xsl:call-template name="form:input">
 								<xsl:with-param name="handle" select="'issue-name'"/>
+								<xsl:with-param name="class" select="'span8 title-input'"/>
 							</xsl:call-template>
 						</div>
 					</div>
 		
 				   <div class="control-group">
-						<label class="control-label" for="field-description">Description</label>
+						<label class="control-label hide" for="field-description">Description</label>
 						<div class="controls">
 							<div id="wmd-button-bar"></div>
 							<xsl:call-template name="form:textarea">
 								<xsl:with-param name="handle" select="'description'"/>
-								<xsl:with-param name="class" select="'input-xlarge'"/>
-								<xsl:with-param name="rows" select="'5'"/>
+								<xsl:with-param name="rows" select="'8'"/>
 								<xsl:with-param name="cols" select="'40'"/>
+								<xsl:with-param name="class" select="'span8'"/>
 							</xsl:call-template>
 						</div>
 					</div>
@@ -77,7 +82,7 @@
 									</xsl:for-each>
 								</xsl:with-param>
 								<xsl:with-param name="allow-multiple" select="'yes'"/>
-								<xsl:with-param name="class" select="'chosen'"/>
+								<xsl:with-param name="class" select="'chosen span8'"/>
 							</xsl:call-template>
 						</div>
 					</div>
@@ -87,21 +92,23 @@
 						<div class="controls">
 							<xsl:call-template name="form:input">
 								<xsl:with-param name="handle" select="'tags'"/>
-								<xsl:with-param name="class" select="'tags-input'"/>
+								<xsl:with-param name="class" select="'tags-input span8'"/>
 							</xsl:call-template>
 						</div>
-					</div>
-					<ul class="tags-list">
+						<ul class="tags-list clearfix">
 						<xsl:for-each select="tags-per-project/tag">
-							<li id="tag-{.}"><xsl:value-of select="."/></li>
+							<li id="tag-{.}"><xsl:if test=". = /data/issue-individual-edit/entry/tags/item"><xsl:attribute name="style">display:none;</xsl:attribute></xsl:if><span><xsl:value-of select="."/></span><a href="#">x</a></li>
 						</xsl:for-each>
 					</ul>
+					</div>
+					
 					
 					<div class="control-group">
 						<label class="control-label" for="priority">Priority Level</label>
 						<div class="controls">
 							<xsl:call-template name="form:select">
 								<xsl:with-param name="handle" select="'priority'"/>
+								<xsl:with-param name="class" select="'span8'"/>
 								<xsl:with-param name="options">
 									<option value="4-No-Priority">No Priority</option>
 									<option value="3-Low">Low</option>
@@ -126,17 +133,7 @@
 					
 				</form>
 				
-			</div><!-- .span9 -->
-			
-			<div class="span3">
-			
-				<div class="well">
-				
-					<p>These are some instructions</p>
-				
-				</div>
-			
-			</div><!-- .span3 -->
+			</div><!-- .span12 -->
 			
 		</div><!-- .row -->
 		

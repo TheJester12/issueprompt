@@ -23,6 +23,7 @@
 		public $dsParamINCLUDEDELEMENTS = array(
 				'system:pagination',
 				'project-name',
+				'project-id',
 				'client',
 				'added-by',
 				'participants',
@@ -45,7 +46,7 @@
 					'website' => 'http://localhost/issuetracker4',
 					'email' => 'jessesutherland06@gmail.com'),
 				'version' => 'Symphony 2.2.5',
-				'release-date' => '2012-06-01T04:21:51+00:00'
+				'release-date' => '2012-06-03T12:28:42+00:00'
 			);
 		}
 

@@ -2,17 +2,15 @@
 
 	require_once(TOOLKIT . '/class.datasource.php');
 
-	Class datasourceissue_individual extends Datasource{
+	Class datasourceissue_individual_edit extends Datasource{
 
-		public $dsParamROOTELEMENT = 'issue-individual';
+		public $dsParamROOTELEMENT = 'issue-individual-edit';
 		public $dsParamORDER = 'desc';
 		public $dsParamPAGINATERESULTS = 'yes';
 		public $dsParamLIMIT = '20';
 		public $dsParamSTARTPAGE = '1';
 		public $dsParamREDIRECTONEMPTY = 'no';
-		public $dsParamPARAMOUTPUT = 'added-by';
 		public $dsParamSORT = 'system:id';
-		public $dsParamHTMLENCODE = 'yes';
 		public $dsParamASSOCIATEDENTRYCOUNTS = 'no';
 
 		public $dsParamFILTERS = array(
@@ -22,7 +20,7 @@
 
 		public $dsParamINCLUDEDELEMENTS = array(
 				'issue-name',
-				'description: formatted',
+				'description: unformatted',
 				'status',
 				'priority',
 				'tags',
@@ -42,13 +40,13 @@
 
 		public function about(){
 			return array(
-				'name' => 'Issue Individual',
+				'name' => 'Issue Individual Edit',
 				'author' => array(
 					'name' => 'Jesse Sutherland',
 					'website' => 'http://localhost/issuetracker4',
 					'email' => 'jessesutherland06@gmail.com'),
 				'version' => 'Symphony 2.2.5',
-				'release-date' => '2012-06-01T22:10:47+00:00'
+				'release-date' => '2012-06-01T22:17:22+00:00'
 			);
 		}
 

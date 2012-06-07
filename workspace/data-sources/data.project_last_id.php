@@ -2,36 +2,23 @@
 
 	require_once(TOOLKIT . '/class.datasource.php');
 
-	Class datasourceissue_individual extends Datasource{
+	Class datasourceproject_last_id extends Datasource{
 
-		public $dsParamROOTELEMENT = 'issue-individual';
+		public $dsParamROOTELEMENT = 'project-last-id';
 		public $dsParamORDER = 'desc';
 		public $dsParamPAGINATERESULTS = 'yes';
-		public $dsParamLIMIT = '20';
+		public $dsParamLIMIT = '1';
 		public $dsParamSTARTPAGE = '1';
 		public $dsParamREDIRECTONEMPTY = 'no';
-		public $dsParamPARAMOUTPUT = 'added-by';
-		public $dsParamSORT = 'system:id';
-		public $dsParamHTMLENCODE = 'yes';
+		public $dsParamSORT = 'project-id';
 		public $dsParamASSOCIATEDENTRYCOUNTS = 'no';
 
 		public $dsParamFILTERS = array(
-				'id' => '{$issueid:48934598345}',
-				'29' => '{$ds-logged-in-member:64556}',
+				'30' => '{$ds-logged-in-member:64556}',
 		);
 
 		public $dsParamINCLUDEDELEMENTS = array(
-				'issue-name',
-				'description: formatted',
-				'status',
-				'priority',
-				'tags',
-				'date-added',
-				'date-modified',
-				'project-link',
-				'added-by',
-				'assigned-to',
-				'organization-link'
+				'project-id'
 		);
 
 
@@ -42,18 +29,18 @@
 
 		public function about(){
 			return array(
-				'name' => 'Issue Individual',
+				'name' => 'Project Last ID',
 				'author' => array(
 					'name' => 'Jesse Sutherland',
 					'website' => 'http://localhost/issuetracker4',
 					'email' => 'jessesutherland06@gmail.com'),
 				'version' => 'Symphony 2.2.5',
-				'release-date' => '2012-06-01T22:10:47+00:00'
+				'release-date' => '2012-06-03T12:12:51+00:00'
 			);
 		}
 
 		public function getSource(){
-			return '3';
+			return '2';
 		}
 
 		public function allowEditorToParse(){

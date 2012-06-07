@@ -16,6 +16,8 @@
 	indent="yes" />
 	
 <xsl:variable name="form:event" select="/data/events/project-new"/>
+<xsl:variable name="new-project-id" select="1"/>
+<xsl:variable name="last-project-id"/>
 
 <xsl:template match="data">
 
@@ -46,16 +48,32 @@
 				<div class="controls">
 					<xsl:call-template name="form:input">
 						<xsl:with-param name="handle" select="'project-name'"/>
+						<xsl:with-param name="class" select="'span8 title-input'"/>
 					</xsl:call-template>
 				</div>
 			</div>
 			
 			<div class="control-group">
-				<label class="control-label" for="client">Client</label>
+				<label class="control-label" for="project-name">Project ID (optional)</label>
 				<div class="controls">
-					<xsl:call-template name="form:input">
-						<xsl:with-param name="handle" select="'client'"/>
-					</xsl:call-template>
+					<xsl:choose>
+						<xsl:when test="$last-project-id != ''">
+							<xsl:variable name="last-project-id" select="project-last-id/entry/project-id"/>
+							<xsl:variable name="new-project-id"><xsl:value-of select="$last-project-id +1"/></xsl:variable>
+							<xsl:call-template name="form:input">
+								<xsl:with-param name="handle" select="'project-id'"/>
+								<xsl:with-param name="value" select="$new-project-id"/>
+								<xsl:with-param name="class" select="'span8'"/>
+							</xsl:call-template>
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:call-template name="form:input">
+								<xsl:with-param name="handle" select="'project-id'"/>
+								<xsl:with-param name="value" select="$new-project-id"/>
+								<xsl:with-param name="class" select="'span8'"/>
+							</xsl:call-template>
+						</xsl:otherwise>
+					</xsl:choose>
 				</div>
 			</div>
 			
@@ -70,8 +88,24 @@
 							</xsl:for-each>
 						</xsl:with-param>
 						<xsl:with-param name="allow-multiple" select="'yes'"/>
-						<xsl:with-param name="class" select="'chosen'"/>
+						<xsl:with-param name="class" select="'chosen span8'"/>
 					</xsl:call-template>
+				</div>
+			</div>
+			
+			<div class="control-group">
+				<label class="control-label" for="client">Client</label>
+				<div class="controls">
+					<xsl:call-template name="form:select">
+						<xsl:with-param name="handle" select="'client'"/>
+						<xsl:with-param name="class" select="'span7'"/>
+						<xsl:with-param name="options">
+							<xsl:for-each select="clients-per-organization/client">
+								<options><xsl:value-of select="."/></options>
+							</xsl:for-each>
+						</xsl:with-param>
+					</xsl:call-template>
+					<div class="btn new-client-button" style="margin-bottom:9px;">New Client</div>
 				</div>
 			</div>
 			

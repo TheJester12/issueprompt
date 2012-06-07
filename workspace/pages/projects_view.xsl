@@ -594,7 +594,7 @@
 						</a>
 					</li>
 					<li>
-						<xsl:if test="$url-status = 'inactive'">
+						<xsl:if test="$url-status = 'resolved'">
 							<xsl:attribute name="class">
 								<xsl:text>active</xsl:text>
 							</xsl:attribute>
@@ -636,9 +636,105 @@
 										<xsl:text disable-output-escaping="yes">&amp;</xsl:text>
 									</xsl:if>
 								</xsl:for-each>
-								<xsl:text>status=inactive</xsl:text>
+								<xsl:text>status=resolved</xsl:text>
 							</xsl:attribute>
-							<xsl:text>Inactive</xsl:text>
+							<xsl:text>Resolved</xsl:text>
+						</a>
+					</li>
+					<li>
+						<xsl:if test="$url-status = 'on-hold'">
+							<xsl:attribute name="class">
+								<xsl:text>active</xsl:text>
+							</xsl:attribute>
+						</xsl:if>
+						<a>
+							<xsl:attribute name="href">
+								<xsl:value-of select="/data/params/root" />
+								<xsl:value-of select="/data/params/parent-path" />
+								<xsl:text>/</xsl:text>
+								<xsl:value-of select="/data/params/current-page" />
+								<xsl:text>/</xsl:text>
+								<xsl:value-of select="/data/params/organization" />
+								<xsl:text>/</xsl:text>
+								<xsl:value-of select="/data/params/projectname" />
+								<xsl:text>/?</xsl:text>
+								<xsl:for-each select="/data/params/*[contains(name(), 'url-')]">
+									<xsl:if test="not(name(.) = 'url-status') and not(name(.) = 'url-p')">
+										<xsl:choose>
+											<xsl:when test="contains(name(.), 'url-users')">
+												<xsl:text>users=</xsl:text>
+												<xsl:call-template name="string-replace-all">
+													<xsl:with-param name="text" select="$url-users" />
+													<xsl:with-param name="replace" select="'+'" />
+													<xsl:with-param name="by" select="'%2B'" />
+												</xsl:call-template>
+											</xsl:when>
+											<xsl:when test="contains(name(.), 'url-tags')">
+												<xsl:text>tags=</xsl:text>
+												<xsl:call-template name="string-replace-all">
+													<xsl:with-param name="text" select="$url-tags" />
+													<xsl:with-param name="replace" select="'+'" />
+													<xsl:with-param name="by" select="'%2B'" />
+												</xsl:call-template>
+											</xsl:when>
+											<xsl:otherwise>
+												<xsl:value-of select="concat(substring-after(name(), 'url-'), '=', text())" />
+											</xsl:otherwise>
+										</xsl:choose>
+										<xsl:text disable-output-escaping="yes">&amp;</xsl:text>
+									</xsl:if>
+								</xsl:for-each>
+								<xsl:text>status=on-hold</xsl:text>
+							</xsl:attribute>
+							<xsl:text>On Hold</xsl:text>
+						</a>
+					</li>
+					<li>
+						<xsl:if test="$url-status = 'invalid'">
+							<xsl:attribute name="class">
+								<xsl:text>active</xsl:text>
+							</xsl:attribute>
+						</xsl:if>
+						<a>
+							<xsl:attribute name="href">
+								<xsl:value-of select="/data/params/root" />
+								<xsl:value-of select="/data/params/parent-path" />
+								<xsl:text>/</xsl:text>
+								<xsl:value-of select="/data/params/current-page" />
+								<xsl:text>/</xsl:text>
+								<xsl:value-of select="/data/params/organization" />
+								<xsl:text>/</xsl:text>
+								<xsl:value-of select="/data/params/projectname" />
+								<xsl:text>/?</xsl:text>
+								<xsl:for-each select="/data/params/*[contains(name(), 'url-')]">
+									<xsl:if test="not(name(.) = 'url-status') and not(name(.) = 'url-p')">
+										<xsl:choose>
+											<xsl:when test="contains(name(.), 'url-users')">
+												<xsl:text>users=</xsl:text>
+												<xsl:call-template name="string-replace-all">
+													<xsl:with-param name="text" select="$url-users" />
+													<xsl:with-param name="replace" select="'+'" />
+													<xsl:with-param name="by" select="'%2B'" />
+												</xsl:call-template>
+											</xsl:when>
+											<xsl:when test="contains(name(.), 'url-tags')">
+												<xsl:text>tags=</xsl:text>
+												<xsl:call-template name="string-replace-all">
+													<xsl:with-param name="text" select="$url-tags" />
+													<xsl:with-param name="replace" select="'+'" />
+													<xsl:with-param name="by" select="'%2B'" />
+												</xsl:call-template>
+											</xsl:when>
+											<xsl:otherwise>
+												<xsl:value-of select="concat(substring-after(name(), 'url-'), '=', text())" />
+											</xsl:otherwise>
+										</xsl:choose>
+										<xsl:text disable-output-escaping="yes">&amp;</xsl:text>
+									</xsl:if>
+								</xsl:for-each>
+								<xsl:text>status=invalid</xsl:text>
+							</xsl:attribute>
+							<xsl:text>Invalid</xsl:text>
 						</a>
 					</li>
 				</ul>

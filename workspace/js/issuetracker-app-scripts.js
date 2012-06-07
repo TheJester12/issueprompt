@@ -7,10 +7,11 @@ $(document).ready(function(){
 	var TagArray = startTags.split(',');
 	//alert(TagArray);
 	for(var i = 0 ; i < TagArray.length ; i++) {
+		//alert(i);
 		//alert(TagArray[i]);
 		$('.tags-list li').each(function(){
-			//alert($(this).attr('id'));
-			if ($(this).attr('id') === "tag-" + TagArray[i]) {
+			alert(TagArray[i] + " " + $(this).attr('id'));
+			if ($(this).attr('id') == "tag-" + TagArray[i]) {
 				$(this).hide();
 			}
 		});
@@ -18,8 +19,14 @@ $(document).ready(function(){
 	}
 	*/
 	
+	
 	$(".change-password").click(function() {
-		$(this).parents(".control-group").replaceWith('<div class="control-group"><label class="control-label" for="password">Password</label><div class="controls"><input name="fields[password][password]" id="password" type="password"></div></div><div class="control-group"><label class="control-label" for="passwordagain">Password Again</label><div class="controls"><input name="fields[password][confirm]" id="passwordagain" type="password"></div></div>');
+		$(this).parents(".control-group").replaceWith('<div class="control-group"><label class="control-label" for="password">Password</label><div class="controls"><input name="fields[password][password]" id="password" type="password" class="span8"></div></div><div class="control-group"><label class="control-label" for="passwordagain">Password Again</label><div class="controls"><input name="fields[password][confirm]" id="passwordagain" type="password" class="span8"></div></div>');
+		return false;
+	});
+	
+	$(".new-client-button").click(function() {
+		$(this).parents(".controls").replaceWith('<div class="controls"><input name="fields[client]" id="fields-client" class="span8"/></div>');
 		return false;
 	});
 	
@@ -31,8 +38,8 @@ $(document).ready(function(){
 		height:'29px'
 	});
 	$('.tags-list li').on("click", function(){
-		var clickedTag = $(this).text();
-		alert(clickedTag);
+		var clickedTag = $(this).find("span").text();
+		//alert(clickedTag);
 		$('.tags-input').addTag(clickedTag);
 		//$(this).hide();
 	});
@@ -40,13 +47,17 @@ $(document).ready(function(){
 
 function onAddTag(tag) {
 	$('.tags-list li').each(function(){
-		if ($(this).text() == tag) {
-			$(this).remove();
+		if ($(this).find("span").text() == tag) {
+			$(this).hide();
 		}
 	});
 }
 function onRemoveTag(tag) {
-	$('.tags-list').append("<li id='tag-" + tag + "'>" + tag + "</li>");
+	$('.tags-list li').each(function(){
+		if ($(this).find("span").text() == tag) {
+			$(this).show();
+		}
+	});
 }
 
 new WMDEditor({

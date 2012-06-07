@@ -37,7 +37,20 @@
 	
 		<div class="row heading">
 			<div class="span12">
-				<h1><xsl:value-of select="issue-individual/entry/issue-name"/></h1>
+				<h1><xsl:if test="issue-individual/entry/status/item = 'Resolved'"><xsl:attribute name="class">resolved</xsl:attribute></xsl:if><xsl:value-of select="issue-individual/entry/issue-name"/><xsl:text> </xsl:text>
+					<span>
+						<xsl:choose>
+							<xsl:when test="issue-individual/entry/priority/item = '1-High'"><xsl:attribute name="class">priority-label priority-1-High</xsl:attribute><xsl:text>High Priority</xsl:text>
+							</xsl:when>
+							<xsl:when test="issue-individual/entry/priority/item = '2-Medium'"><xsl:attribute name="class">priority-label priority-2-Medium</xsl:attribute><xsl:text>Medium Priority</xsl:text>
+							</xsl:when>
+							<xsl:when test="issue-individual/entry/priority/item = '3-Low'"><xsl:attribute name="class">priority-label priority-3-Low</xsl:attribute><xsl:text>Low Priority</xsl:text>
+							</xsl:when>
+							<xsl:when test="issue-individual/entry/priority/item = '4-No-Priority'"><xsl:attribute name="class">priority-label priority-4-No-Priority</xsl:attribute><xsl:text>No Priority</xsl:text>
+							</xsl:when>
+						</xsl:choose>
+					</span>
+				</h1>
 			</div>
 		</div>
 		
@@ -55,8 +68,8 @@
 							<th>Date Modified</th>
 						</tr>
 						<tr>
-							<td><xsl:value-of select="issue-individual/entry/@id"/></td>
-							<td><xsl:value-of select="issue-individual/entry/status/item"/></td>
+							<td><span class="badge"><xsl:value-of select="issue-individual/entry/@id"/></span></td>
+							<td><span class="badge"><xsl:if test="issue-individual/entry/status/item = 'Resolved'"><xsl:attribute name="class">badge badge-success</xsl:attribute></xsl:if><xsl:value-of select="issue-individual/entry/status/item"/></span></td>
 							<td><xsl:value-of select="issue-individual/entry/project-link/item"/></td>
 							<td><xsl:call-template name="format-date"><xsl:with-param name="date" select="issue-individual/entry/date-added"/><xsl:with-param name="format" select="'m. D, Y'"/></xsl:call-template></td>
 							<td><xsl:call-template name="format-date"><xsl:with-param name="date" select="issue-individual/entry/date-modified"/><xsl:with-param name="format" select="'m. D, Y'"/></xsl:call-template></td>
@@ -72,7 +85,7 @@
 					
 						<div class="span3">
 						
-							<a href="#" class="avatar"><xsl:variable name="added-by-member" select="issue-individual/entry/added-by/item/@id"/><img src="http://www.gravatar.com/avatar/{/data/comments-per-issue-emails/entry[@id = $added-by-member]/email/@hash}?s=50&amp;d=mm" /><span><xsl:value-of select="issue-individual/entry/added-by/item"/></span></a>
+							<a href="{$root}/users/view/{logged-in-member-organization/entry/organization-name/@handle}/{issue-individual/entry/added-by/item/@handle}/" class="avatar"><xsl:variable name="added-by-member" select="issue-individual/entry/added-by/item/@id"/><img src="http://www.gravatar.com/avatar/{/data/comments-per-issue-emails/entry[@id = $added-by-member]/email/@hash}?s=50&amp;d=mm" /><span><xsl:value-of select="issue-individual/entry/added-by/item"/></span></a>
 												
 						</div><!-- .span3 -->
 						
@@ -86,23 +99,21 @@
 					
 				</div><!-- .well -->
 				
-				<xsl:if test="comments-per-issue/pagination/@total-entries != 0">
+				<xsl:if test="comments-per-issue/pagination/@total-entries != 0 or project-view-individual/entry/participants/item/@id = $member-id">
 					<h3>Comments</h3>
 				</xsl:if>
 				
 				<xsl:apply-templates select="comments-per-issue/entry"/>
 							
 				<xsl:if test="project-view-individual/entry/participants/item/@id = $member-id">
-			
-					<h3>Add New Comment</h3>
-					
+									
 					<div class="well comment">
 					
 						<div class="row">
 						
 							<div class="span3">
 							
-								<a href="#" class="avatar"><xsl:variable name="added-by-member" select="logged-in-member/entry/@id"/><img src="http://www.gravatar.com/avatar/{/data/comments-per-issue-emails/entry[@id = $added-by-member]/email/@hash}?s=50&amp;d=mm" /><span><xsl:value-of select="logged-in-member/entry/name"/></span></a>
+								<a href="{$root}/users/view/{logged-in-member-organization/entry/organization-name/@handle}/{logged-in-member/entry/name/@handle}/" class="avatar"><xsl:variable name="added-by-member" select="logged-in-member/entry/@id"/><img src="http://www.gravatar.com/avatar/{/data/comments-per-issue-emails/entry[@id = $added-by-member]/email/@hash}?s=50&amp;d=mm" /><span><xsl:value-of select="logged-in-member/entry/name"/></span></a>
 													
 							</div><!-- .span3 -->
 							
@@ -116,7 +127,7 @@
 										<div class="controls">
 											<xsl:call-template name="form:textarea">
 												<xsl:with-param name="handle" select="'comment'"/>
-												<xsl:with-param name="class" select="'input-xlarge'"/>
+												<xsl:with-param name="class" select="'span5'"/>
 												<xsl:with-param name="rows" select="'3'"/>
 												<xsl:with-param name="cols" select="'40'"/>
 											</xsl:call-template>
@@ -147,8 +158,23 @@
 				<xsl:choose>
 				
 					<xsl:when test="project-view-individual/entry/participants/item/@id = $member-id">
-				
-						<div class="btn-area"><a href="#" class="btn btn-primary btn-large btn-block">Issue Resolved</a></div>
+					
+						<xsl:choose>
+							
+							<xsl:when test="issue-individual/entry/status/item = 'Resolved'">
+							
+								<div class="btn-area"><div class="btn btn-large btn-block disabled">Marked As Resolved</div></div>
+
+							</xsl:when>
+							
+							<xsl:otherwise>
+							
+								<div class="btn-area"><form method="post" action="" enctype="multipart/form-data"><input name="fields[status]" type="hidden" value="Resolved"/><input name="fields[date-resolved]" type="hidden" value="{$today} {$current-time}" /><input name="fields[resolved-by]" type="hidden" value="{$member-id}"/><input name="id" type="hidden" value="{issue-individual/entry/@id}" /><button name="action[issue-resolved]" type="submit" class="btn btn-primary btn-large btn-block">Issue Resolved</button></form></div>
+
+															
+							</xsl:otherwise>
+							
+						</xsl:choose>
 						
 						<div class="btn-area"><a href="{$root}/projects/issues/edit/{issue-individual/entry/organization-link/item/@handle}/{issue-individual/entry/project-link/item/@handle}/{issue-individual/entry/@id}/" class="btn btn-large btn-block">Edit Issue</a></div>
 					
@@ -176,7 +202,7 @@
 					</li>
 					<xsl:for-each select="issue-individual/entry/assigned-to/item">
 						<li>
-							<a href="#"><xsl:value-of select="."/></a>
+							<a href="{$root}/users/view/{/data/logged-in-member-organization/entry/organization-name/@handle}/{@handle}/"><xsl:value-of select="."/></a>
 						</li>
 					</xsl:for-each>
 				</ul>

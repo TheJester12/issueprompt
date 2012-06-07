@@ -76,6 +76,7 @@
 						<div class="controls">
 							<xsl:call-template name="form:input">
 								<xsl:with-param name="handle" select="'name'"/>
+								<xsl:with-param name="class" select="'span8 title-input'"/>
 								<xsl:with-param name="value" select="user-view-individual/entry/name"/>
 							</xsl:call-template>
 						</div>
@@ -86,6 +87,7 @@
 						<div class="controls">
 							<xsl:call-template name="form:input">
 								<xsl:with-param name="handle" select="'email'"/>
+								<xsl:with-param name="class" select="'span8'"/>
 								<xsl:with-param name="value" select="user-view-individual/entry/email"/>
 							</xsl:call-template>
 						</div>

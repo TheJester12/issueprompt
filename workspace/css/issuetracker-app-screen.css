@@ -10,8 +10,19 @@ body {
 .btn-block {
 	display:block;
 }
+button.btn-block {
+	width:100%;
+}
 .btn-area {
 	margin-bottom:1em;
+}
+.btn-area form {
+	margin:0px;
+}
+.title-input {
+	font-size:24px;
+	line-height:32px;
+	height:32px;
 }
 .heading {
 	margin-bottom:18px;
@@ -31,13 +42,31 @@ body {
 }
 .priority {
 	display:block;
-	width:14px;
-	height:14px;
-	margin-left:10px;
-	-webkit-border-radius: 7px;
-	-moz-border-radius: 7px;
+	width:16px;
+	height:16px;
+	margin:5px 5px 5px 10px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
 	-webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px;
 	-moz-box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px; /* FF 3.5+ */
+}
+.priority-label {
+	display:inline-block;
+	margin-left:5px;
+	-webkit-border-radius:17px;
+	-moz-border-radius: 17px;
+	-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+	-moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	padding:5px 10px;
+	font-size: 11px;
+	line-height:11px;
+	color:#fff;
+	text-transform:uppercase;
+	margin-bottom:10px;
+	position:relative;
+	top:-6px;
 }
 .priority-4-No-Priority {
 	background: -webkit-gradient(linear, left top, left bottom, from(#c9c9c9), to(#8d8d8d));
@@ -127,6 +156,7 @@ div.tagsinput span.tag a:hover {
 .tags-list {
 	margin:0 0 15px;
 	padding:0px;
+	list-style: none;
 }
 .tags-list li {
 	display:inline-block;
@@ -150,10 +180,28 @@ div.tagsinput span.tag a:hover {
 	color: #666;
 	border: 1px solid #aaaaaa;
 	line-height: 13px;
-	padding: 3px 12px 3px 5px;
+	padding: 3px 14px 3px 5px;
 	margin: 3px 5px 3px 0px;
 	position: relative; 
 	cursor: pointer;
+	width:auto;
+	float:left;
+}
+.tags-list li span {
+	padding-right:5px;
+}
+.tags-list li a {
+	text-indent: -9999px;
+	background: url(../images/plus-grey.png) no-repeat;
+	display: block;
+	position: absolute;
+	right: 6px;
+	top: 5px;
+	width: 8px;
+	height: 8px;
+}
+.tags-list li:hover a {
+	background-position:right -16px;
 }
 .chzn-container .chzn-choices {
 	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -172,9 +220,7 @@ div.tagsinput span.tag a:hover {
 	border: 1px solid #CCC;
 	color: #555;
 }
-.controls input, .controls textarea, .controls select {
-	width:96%;
-}
+
 .comment .meta {
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 	font-size: 11px;
@@ -184,6 +230,15 @@ div.tagsinput span.tag a:hover {
 	text-transform: uppercase;
 	margin-bottom:0px;
 }
+.comment .span3 {
+	width:185px;
+}
+.comment .span5 {
+	width: 455px;
+}
+.comment textarea.span5 {
+	width: 445px;
+}
 a.avatar {
 	display:block;
 	text-decoration:none;
@@ -191,10 +246,16 @@ a.avatar {
 a.avatar span {
 	margin-left:5px;
 }
+h1.resolved {
+	text-decoration:line-through;
+}
 h3 {
 	margin-bottom:5px;
 }
 /*
+.controls input, .controls textarea, .controls select {
+	width:96%;
+}
 .controls input, .controls textarea, .controls select {
 	box-sizing:border-box;
     width:100%;
